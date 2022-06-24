@@ -1,16 +1,27 @@
-import React from 'react'
+import React, {useState, useContext, useEffect} from 'react'
+import { currentPageContext } from '../Container'
+
 const URL_TMDB = 'https://image.tmdb.org/t/p/w300'
 
-export function MoviesList ({dataMovieList}){
+export function MoviesList ({dataMoviesList}){
+
+  const {currentPage, setCurrentPage} = useContext(currentPageContext)
+
+  function sliceDataMoviesListForPage(dataMoviesList, currentPage) {
+  const dataMoviesListPage = dataMoviesList.slice(10*(currentPage - 1), 10 * currentPage) 
+  return dataMoviesListPage
+  }
     return (
         <div className="movie-cart__main">
-          {dataMovieList.map((item, index) =>
-            <MovieCartItem key={index} title={item.title} raiting={item.vote_average} imgUrl={item.backdrop_path}/>
+          {
+          sliceDataMoviesListForPage(dataMoviesList, currentPage).map((item, index) => 
+            <MovieCartItem key={index} title={item.title} raiting={item.vote_average} imgUrl={item.poster_path}/>
           )}
       </div>  
     ) 
   }
-  
+
+
 function MovieCartItem({title, raiting, imgUrl}) {
     return (
         <div className="movie-cart__main__item">
