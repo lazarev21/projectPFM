@@ -1,20 +1,24 @@
 import React, {useState, useContext, useEffect} from 'react'
-import { currentPageContext } from '../Container'
+import { PageContext } from '../Container'
 
 const URL_TMDB = 'https://image.tmdb.org/t/p/w300'
 
 export function MoviesList ({dataMoviesList}){
 
-  const {currentPage, setCurrentPage} = useContext(currentPageContext)
-
-  function sliceDataMoviesListForPage(dataMoviesList, currentPage) {
-  const dataMoviesListPage = dataMoviesList.slice(10*(currentPage - 1), 10 * currentPage) 
+  const {currentPage, moviesReleaseDate, setAmountPage} = useContext(PageContext)
+  //тут делаю новый массив, отфильтровав по дате
+  const filterDataMoviesList = dataMoviesList.filter(item => item.release_date.slice(0,4) === moviesReleaseDate.toString());
+  setAmountPage(Math.ceil(filterDataMoviesList.length/10))
+  //тут забираю его, чтобы отрезать кусок из 10 карточек фильма
+  function sliceDataMoviesListForPage(filterDataMoviesList, currentPage) {
+  const dataMoviesListPage = filterDataMoviesList.slice(10*(currentPage - 1), 10 * currentPage) 
   return dataMoviesListPage
   }
+  //тут рендерю эти 10 карточек
     return (
         <div className="movie-cart__main">
           {
-          sliceDataMoviesListForPage(dataMoviesList, currentPage).map((item, index) => 
+          sliceDataMoviesListForPage(filterDataMoviesList, currentPage).map((item, index) => 
             <MovieCartItem key={index} title={item.title} raiting={item.vote_average} imgUrl={item.poster_path}/>
           )}
       </div>  
