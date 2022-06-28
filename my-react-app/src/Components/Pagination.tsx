@@ -1,19 +1,23 @@
-import React, {useContext} from "react";
-import { PageContext } from "./Container";
+import React from "react";
+import {useSelector, useDispatch} from 'react-redux'
+import { nextPageAction, previousPageAction } from "../store/reducers/currentPageReducer";
 
 export function Pagination() {
-    const {currentPage, setCurrentPage, amountPage} = useContext(PageContext)
-    function nextPage() {
-      setCurrentPage(currentPage + 1)
+    const amountPage = 20
+    const currentPage = useSelector(state => state.currentPageReducer.page)
+    const dispatch = useDispatch()
+    const nextPage = () => {
+      dispatch(nextPageAction(1))
     }
-    function previousPage() { 
-      setCurrentPage(currentPage - 1)
+    const previousPage = () => {
+      dispatch(previousPageAction(1))
     }
+
     return(
       <div className="pagination">
         <div className="pagination__buttons">
-          <button disabled={currentPage===1} className="back-pagination" onClick={() => previousPage() }>Назад</button>
-          <button disabled={currentPage===amountPage} className="forvard-pagination" onClick={() => nextPage() }>Вперед</button>
+          {<button disabled={currentPage ===1} className="back-pagination" onClick={() => previousPage() }>Назад</button>}
+          <button className="forvard-pagination" onClick={() => nextPage() }>Вперед</button>
         </div>
         <div className="pagination-pages-info">
           <div className="current-page">{currentPage}</div>
@@ -22,5 +26,5 @@ export function Pagination() {
         </div>
       </div>
     )
-  }
+  } 
   
