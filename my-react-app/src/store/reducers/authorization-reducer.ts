@@ -1,18 +1,18 @@
 
 const defaultStateAuthorization = {
-    isLogin: false
+    isAuth: false
 }
 const LOGIN = "LOGIN";
 
 export const authorizationReducer = (state = defaultStateAuthorization, action) => {
     switch (action.type) {
         case LOGIN: 
-            return {...state, isLogin: true} 
+            return {...state, isAuth: true} 
         default: 
             return state
     }
 } 
-export const authorizationAction = (value: boolean) => ({type: LOGIN, isLogin: value})
+export const authorizationAction = (value: boolean) => ({type: LOGIN, isAuth: value})
 
 
 

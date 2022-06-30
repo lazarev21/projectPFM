@@ -1,5 +1,5 @@
 import React from "react";
-import { authorizationHelper } from "../store/helpers/authorization";
+import { authorizationHelper } from "../helpers/authorization";
 import {useDispatch} from 'react-redux'
 import { authorizationAction } from "../store/reducers/authorization-reducer";
 

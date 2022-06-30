@@ -1,12 +1,14 @@
-import { dataAuthorization } from "../../data/data-authorization";
+import { dataAuthorization } from "../data/data-authorization";
 
 
 export function authorizationHelper(event) {
     
-    const dataAuthorizationFromUI = {
+    const dataAuthorizationFromUI: {login: string; password: string} = {
         login: event.target[0].value,
         password: event.target[1].value,
     }
+
+    localStorage.setItem('dataAuthorization', JSON.stringify(dataAuthorizationFromUI));
 
     if (dataAuthorizationFromUI.password === dataAuthorization.password && dataAuthorizationFromUI.login === dataAuthorization.login ) {
         console.log(true)
@@ -14,7 +16,7 @@ export function authorizationHelper(event) {
     }
     else {
         console.log(false)
-        console.log(dataAuthorizationFromUI)
+        return false
         
     }
 
