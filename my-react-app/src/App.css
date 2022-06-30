@@ -87,7 +87,130 @@
 
 
 
+.modal-authorization-back, .modal-confirmation-back, .modal-settings-back {
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  display: none;
+  justify-content: center;
 
+}
+
+.modal-authorization, .modal-confirmation, .modal-settings{
+  display: flex;
+  margin: auto;
+
+}
+.modal-authorization-back.active {
+  display: flex;
+}
+.modal-authorization__main, .modal-confirmation__main, .modal-settings__main{
+  height: 319px;
+  width: 273px;
+  margin: auto;
+  border-radius: 12px;
+  box-sizing: border-box;
+  background-color: #fff;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.modal-authorization__main__header, .modal-confirmation__main__header, .modal-settings__main__header {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.modal-authorization__main__header__title, .modal-confirmation__main__header__title, .modal-settings__main__header__title {
+  margin-top: 21px;
+  margin-left: 14px;
+  
+}
+
+.modal-authorization__main__header__btn-close, .modal-confirmation_main__header__btn-close, .modal-settings_main__header__btn-close {
+  margin-top: 25px;
+  margin-right: 14px;
+  opacity: 0.45;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 17px;
+  cursor: pointer;
+  transform: rotate(-45deg);
+}
+
+.modal-authorization__main__body, .modal-confirmation__main__body, .modal-settings__main__body  {
+  display: flex;
+  flex-direction: column;
+}
+
+.authorization-form__header, .confirmation-form__header, .settings-form__header{
+  margin-left: 14px;
+  margin-bottom: 3px;
+}
+
+.input-email, .input-code {
+  box-sizing: border-box;
+  border: #000 solid 1px;
+  width: 245px;
+  height: 32px;
+  box-sizing: border-box;
+  margin: auto;
+  margin-bottom: 7px;
+}
+
+
+
+.input-email__field, .input-code__field {
+  font-size: 16px;
+  height: 31px;
+  width: 244px;
+  padding-left: 8px;
+}
+
+.input-name {
+  border: #000 solid 1px;
+}
+
+.input-name-main {
+  display: flex;
+  justify-content: space-between;
+  width: 245px;
+  margin: auto;
+
+}
+.input-name__field {
+  font-size: 16px;
+  height: 31px;
+  width: 200px;
+  padding-left: 8px;
+}
+
+.input-name__submit {
+  border: #000 solid 1px;
+  box-sizing: border-box;
+  margin-left: 8px;
+  width: 29px;
+  height: 32px;
+}
+
+
+
+.input-email__submit,.input-code__submit, .input-email__code {
+  border: #000 solid 1px;
+  box-sizing: border-box;
+  margin-left: 8px;
+  margin-bottom: 8px;
+  width: 120px;
+  height: 34px;
+  font-size: 16px;
+  margin-left: 14px;
+ 
+}
 
 
 

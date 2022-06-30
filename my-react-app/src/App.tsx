@@ -1,15 +1,17 @@
 import React from 'react'
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import './App.css'
-import { Header } from './Components/Header'
-import { Container } from './Components/Container'
+import { Header } from './Components/header'
+import { Container } from './Components/container'
 
 function App() {
+  const [modalAuthorizationActive, setmodalAuthorizationActive ] = useState(false
+    )
 
   return (
     <div className="App">
-      <Header />
-      <Container />
+      <Header modalAuthorizationActive={modalAuthorizationActive} setModalAuthorizationActive ={setmodalAuthorizationActive}/>
+      <Container modalAuthorizationActive={modalAuthorizationActive} setModalAuthorizationActive ={setmodalAuthorizationActive}/>
     </div>
   )
 }

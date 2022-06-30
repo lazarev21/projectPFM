@@ -1,8 +1,19 @@
 import React, {useContext} from "react"
-import { GenreCheckboxList } from "./GenreCheckboxList"
-import { dataGenre } from "../../data/data_genre"
+import { GenreCheckboxList } from "./genreCheckboxList"
+import { dataGenre } from "../../data/data-genre"
+import {useDispatch} from "react-redux"
+import { yearAction } from "../../store/reducers/current-date-release-reducer"
+import { currentPageFirstAction } from "../../store/reducers/current-pages-reducer"
+
 export function FiltersList() {
-     
+    const dispatch = useDispatch()
+    const currentDateRelease = (value) => {
+      dispatch(yearAction(value))
+    }
+    const currentPageFirst = (value) => {
+      dispatch(currentPageFirstAction(value))
+    }
+   
     return (
       <div className="filter-list">
         <div className="filter-list__title">Фильтры</div>
@@ -25,8 +36,9 @@ export function FiltersList() {
           <div className="realise-date__select">
             <select name="realise-date" id="realise-date" className="filter-list__select-realise-date" 
             
-            //onChange={(event)=> {setMoviesReleaseDateSorting(event.target.value);
-              //setCurrentPage(1)}}
+            onChange={(event)=> {currentDateRelease(event.target.value);
+                                  currentPageFirst(1)
+                                }}
             >
               <option value="2020">2020</option>
               <option value="2019" >2019</option>
