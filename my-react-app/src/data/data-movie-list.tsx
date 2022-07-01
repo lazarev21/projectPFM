@@ -4062,4 +4062,4 @@ export const dataMoviesList = [
     vote_average: 6.1,
     vote_count: 885,
   },
-  ]
+];

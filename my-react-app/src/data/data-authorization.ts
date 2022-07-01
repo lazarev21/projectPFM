@@ -1,4 +1,4 @@
-export const dataAuthorization: {login: string; password: string} = {
-    login: 'lazarev1321@bk.ru',
-    password: '123456'
-}
+export const dataAuthorization: { login: string; password: string } = {
+  login: "lazarev1321@bk.ru",
+  password: "123456",
+};

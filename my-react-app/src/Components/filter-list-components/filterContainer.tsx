@@ -1,6 +1,6 @@
 import React from "react"
 import { FiltersList } from "./fIlterList"
-import { Pagination } from "../gagination"
+import { Pagination } from "../pagination"
 
 export function FilterContainer() {
     return(

@@ -4,7 +4,8 @@ import { dataGenre } from "../../data/data-genre"
 import {useDispatch} from "react-redux"
 import { yearAction } from "../../store/reducers/current-date-release-reducer"
 import { currentPageFirstAction } from "../../store/reducers/current-pages-reducer"
-
+import { sortingAction } from "../../store/reducers/current-sort-type-reducer"
+import { SORT_BY_FAVORITES_MOVIES, SORT_BY_POPULAR_IN_DESCENDING, SORT_BY_POPULAR_IN_INCREASING, SORT_BY_SEE_LATER_MOVIES } from "../../const"
 export function FiltersList() {
     const dispatch = useDispatch()
     const currentDateRelease = (value) => {
@@ -12,6 +13,9 @@ export function FiltersList() {
     }
     const currentPageFirst = (value) => {
       dispatch(currentPageFirstAction(value))
+    }
+    const currentSorting = (value) => {
+      dispatch(sortingAction(value))
     }
    
     return (
@@ -23,9 +27,14 @@ export function FiltersList() {
             <p className="">Сортировать по:</p>
           </div>
           <div className="sorting__select">
-            <select name="sorting" id="sorting" className="filter-list__select-sorting">
-              <option value="popular-descending">Популярные по убывание</option>
-              <option value="popular-increasing">Популярные по возрастанию</option>
+            <select name="sorting" id="sorting" className="filter-list__select-sorting"
+             onChange={(event)=> {currentSorting(event.target.value);
+              currentPageFirst(1)
+            }}>
+             {<option value={SORT_BY_POPULAR_IN_DESCENDING}>{SORT_BY_POPULAR_IN_DESCENDING}</option>}
+              <option value={SORT_BY_POPULAR_IN_INCREASING}>{SORT_BY_POPULAR_IN_INCREASING}</option>
+              <option value={SORT_BY_FAVORITES_MOVIES}>{SORT_BY_FAVORITES_MOVIES}</option>
+              <option value={SORT_BY_SEE_LATER_MOVIES}>{SORT_BY_SEE_LATER_MOVIES}</option>
             </select>
           </div>
         </div>
